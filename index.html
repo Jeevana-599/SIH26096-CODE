@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ambedkar Heritage AI Archive</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo" onclick="showSection('home')">
+        <div class="logo-box">AH</div>
+
+        <div>
+            <h2>Ambedkar Heritage</h2>
+            <span>AI Digital Archive • SIH26096</span>
+        </div>
+    </div>
+
+    <div class="header-actions">
+
+        <select id="languageSelect">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Marathi</option>
+            <option>Telugu</option>
+            <option>Tamil</option>
+            <option>Bengali</option>
+            <option>Gujarati</option>
+            <option>Punjabi</option>
+        </select>
+
+        <button onclick="toggleDarkMode()">◐</button>
+
+        <button class="profile" onclick="showSection('admin')">
+            JD
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= LAYOUT ================= -->
+
+<div class="layout">
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <button class="nav active" onclick="showSection('home')">
+        🏠 Home
+    </button>
+
+    <button class="nav" onclick="showSection('archive')">
+        📚 Digital Archive
+    </button>
+
+    <button class="nav" onclick="showSection('search')">
+        🔍 Semantic Search
+    </button>
+
+    <button class="nav" onclick="showSection('knowledge')">
+        🧠 Knowledge Graph
+    </button>
+
+    <button class="nav" onclick="showSection('timeline')">
+        🕒 Timeline
+    </button>
+
+    <button class="nav" onclick="showSection('media')">
+        🎥 Audio / Video
+    </button>
+
+    <button class="nav" onclick="showSection('assistant')">
+        🤖 AI Research Assistant
+    </button>
+
+    <button class="nav" onclick="showSection('research')">
+        ⭐ My Research
+    </button>
+
+    <button class="nav" onclick="showSection('kiosk')">
+        🖥️ Smart Kiosk
+    </button>
+
+    <button class="nav" onclick="showSection('admin')">
+        ⚙️ Administration
+    </button>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="section active">
+
+    <div class="hero">
+
+        <div class="hero-text">
+
+            <span class="eyebrow">
+                AI-POWERED INSTITUTIONAL HERITAGE PLATFORM
+            </span>
+
+            <h1>
+                Explore, Preserve & Understand
+                <span>Heritage</span>
+            </h1>
+
+            <p>
+                A unified digital archive for manuscripts, books,
+                photographs, speeches, audio, video and historical
+                records.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary"
+                        onclick="showSection('archive')">
+                    Explore Archive
+                </button>
+
+                <button class="secondary"
+                        onclick="showSection('assistant')">
+                    Ask AI Assistant
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="portrait">
+                B. R.<br>
+                <strong>AMBEDKAR</strong>
+            </div>
+
+            <p>Digital Heritage Collection</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong id="totalDocuments">12</strong>
+            <span>Archive Items</span>
+        </div>
+
+        <div class="stat">
+            <strong>8</strong>
+            <span>Languages</span>
+        </div>
+
+        <div class="stat">
+            <strong>24/7</strong>
+            <span>Digital Access</span>
+        </div>
+
+        <div class="stat">
+            <strong>5+</strong>
+            <span>AI Services</span>
+        </div>
+
+    </div>
+
+
+    <h2>Explore Collections</h2>
+
+    <div class="collection-grid">
+
+        <div class="collection"
+             onclick="showSection('archive')">
+
+            <div class="collection-icon">📜</div>
+
+            <h3>Manuscripts</h3>
+
+            <p>
+                Digitized historical manuscripts
+                and handwritten documents.
+            </p>
+
+        </div>
+
+
+        <div class="collection"
+             onclick="showSection('archive')">
+
+            <div class="collection-icon">📚</div>
+
+            <h3>Books</h3>
+
+            <p>
+                Books, writings and institutional
+                documents.
+            </p>
+
+        </div>
+
+
+        <div class="collection"
+             onclick="showSection('media')">
+
+            <div class="collection-icon">🎙️</div>
+
+            <h3>Audio Archive</h3>
+
+            <p>
+                Speeches, interviews, lectures
+                and narrations.
+            </p>
+
+        </div>
+
+
+        <div class="collection"
+             onclick="showSection('media')">
+
+            <div class="collection-icon">🎥</div>
+
+            <h3>Video Archive</h3>
+
+            <p>
+                Documentaries, interviews and
+                historical videos.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DIGITAL ARCHIVE ================= -->
+
+<section id="archive" class="section">
+
+    <div class="page-header">
+
+        <div>
+            <small> CENTRAL REPOSITORY </small>
+
+            <h1>Digital Archive</h1>
+
+            <p>
+                Browse historical materials and
+                institutional records.
+            </p>
+        </div>
+
+        <button class="primary"
+                onclick="openUpload()">
+            + Upload Item
+        </button>
+
+    </div>
+
+
+    <div class="filters">
+
+        <input
+            type="text"
+            id="archiveSearch"
+            placeholder="Search archive..."
+            onkeyup="filterArchive()"
+        >
+
+        <select id="typeFilter"
+                onchange="filterArchive()">
+
+            <option value="">All Types</option>
+            <option value="Manuscript">Manuscript</option>
+            <option value="Book">Book</option>
+            <option value="Speech">Speech</option>
+            <option value="Photograph">Photograph</option>
+            <option value="Audio">Audio</option>
+            <option value="Video">Video</option>
+
+        </select>
+
+
+        <select id="subjectFilter"
+                onchange="filterArchive()">
+
+            <option value="">All Subjects</option>
+            <option value="Constitutional">Constitutional</option>
+            <option value="Social Reform">Social Reform</option>
+            <option value="Education">Education</option>
+            <option value="Law">Law</option>
+            <option value="Economics">Economics</option>
+            <option value="Women's Rights">Women's Rights</option>
+
+        </select>
+
+    </div>
+
+
+    <div id="archiveGrid"
+         class="archive-grid">
+    </div>
+
+</section>
+
+
+
+<!-- ================= SEARCH ================= -->
+
+<section id="search" class="section">
+
+    <div class="page-header">
+
+        <div>
+            <small>AI DISCOVERY</small>
+
+            <h1>Semantic Search</h1>
+
+            <p>
+                Search the archive using natural language.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            id="semanticInput"
+            placeholder="Example: What did Ambedkar discuss about social democracy?"
+            onkeydown="if(event.key==='Enter') semanticSearch()"
+        >
+
+        <button class="primary"
+                onclick="semanticSearch()">
+            Search
+        </button>
+
+    </div>
+
+
+    <div class="suggestions">
+
+        <button onclick="useSearch('Constituent Assembly speeches')">
+            Constituent Assembly speeches
+        </button>
+
+        <button onclick="useSearch('Social Democracy')">
+            Social Democracy
+        </button>
+
+        <button onclick="useSearch('Fundamental Rights')">
+            Fundamental Rights
+        </button>
+
+        <button onclick="useSearch('Education')">
+            Education
+        </button>
+
+    </div>
+
+
+    <div id="searchResults"></div>
+
+</section>
+
+
+
+<!-- ================= KNOWLEDGE GRAPH ================= -->
+
+<section id="knowledge" class="section">
+
+    <div class="page-header">
+
+        <div>
+            <small>INTELLIGENT KNOWLEDGE MAP</small>
+
+            <h1>Knowledge Graph</h1>
+
+            <p>
+                Explore relationships between people,
+                events and historical concepts.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="graph-buttons">
+
+        <button onclick="showGraph('Ambedkar')">
+            Ambedkar
+        </button>
+
+        <button onclick="showGraph('Constitution')">
+            Constitution
+        </button>
+
+        <button onclick="showGraph('Constituent Assembly')">
+            Constituent Assembly
+        </button>
+
+        <button onclick="showGraph('Social Democracy')">
+            Social Democracy
+        </button>
+
+    </div>
+
+
+    <div class="graph-container">
+
+        <div id="graph">
+        </div>
+
+        <div class="entity-info">
+
+            <small>SELECTED ENTITY</small>
+
+            <h2 id="entityName">
+                Ambedkar
+            </h2>
+
+            <p id="entityDescription">
+                Central historical entity.
+            </p>
+
+            <div id="entityRelations">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TIMELINE ================= -->
+
+<section id="timeline" class="section">
+
+    <div class="page-header">
+
+        <div>
+            <small>MEMORIAL STORYTELLING</small>
+
+            <h1>Historical Timeline</h1>
+
+            <p>
+                Explore important stages and events.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div id="timelineContainer"
+         class="timeline">
+    </div>
+
+</section>
+
+
+
+<!-- ================= MEDIA ================= -->
+
+<section id="media" class="section">
+
+    <div class="page-header">
+
+        <div>
+            <small>AUDIO-VISUAL ARCHIVE</small>
+
+            <h1>Media Library</h1>
+
+            <p>
+                Audio, video, narration and transcripts.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div id="mediaGrid"
+         class="media-grid">
+    </div>
+
+</section>
+
+
+
+<!-- ================= AI ASSISTANT ================= -->
+
+<section id="assistant" class="section">
+
+    <div class="page-header">
+
+        <div>
+            <small>SOURCE-GROUNDED AI</small>
+
+            <h1>AI Research Assistant</h1>
+
+            <p>
+                Ask natural-language questions about
+                the digital archive.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="assistant">
+
+        <div id="chat"
+             class="chat">
+
+            <div class="bot-message">
+
+                <strong>Archive Assistant</strong>
+
+                <p>
+                    Hello! Ask me about Ambedkar's
+                    historical archive.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input">
+
+            <input
+                id="assistantInput"
+                placeholder="Ask a research question..."
+                onkeydown="if(event.key==='Enter') askAssistant()"
+            >
+
+            <button class="primary"
+                    onclick="askAssistant()">
+                Ask
+            </button>
+
+        </div>
+
+
+        <div class="quick-questions">
+
+            <button onclick="askQuestion(
+                'Show me Constituent Assembly speeches'
+            )">
+                Constituent Assembly speeches
+            </button>
+
+            <button onclick="askQuestion(
+                'What is related to social democracy?'
+            )">
+                Social Democracy
+            </button>
+
+            <button onclick="askQuestion(
+                'Which documents discuss education?'
+            )">
+                Education
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MY RESEARCH ================= -->
+
+<section id="research" class="section">
+
+    <div class="page-header">
+
+        <div>
+
+            <small>PERSONAL RESEARCH</small>
+
+            <h1>My Research Collection</h1>
+
+            <p>
+                Saved documents and research materials.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div id="savedItems"
+         class="archive-grid">
+    </div>
+
+</section>
+
+
+
+<!-- ================= KIOSK ================= -->
+
+<section id="kiosk" class="section">
+
+    <div class="page-header">
+
+        <div>
+
+            <small>MUSEUM EXPERIENCE</small>
+
+            <h1>Smart Kiosk</h1>
+
+            <p>
+                Touch-friendly interactive heritage interface.
+            </p>
+
+        </div>
+
+        <button class="primary"
+                onclick="goFullscreen()">
+            Fullscreen
+        </button>
+
+    </div>
+
+
+    <div class="kiosk">
+
+        <div class="kiosk-top">
+
+            <strong>
+                AMBEDKAR HERITAGE
+            </strong>
+
+            <span id="clock"></span>
+
+        </div>
+
+
+        <h1>
+            What would you like to explore?
+        </h1>
+
+
+        <div class="kiosk-grid">
+
+            <button onclick="showSection('timeline')">
+                🕒
+                <span>Timeline</span>
+            </button>
+
+            <button onclick="showSection('archive')">
+                📚
+                <span>Documents</span>
+            </button>
+
+            <button onclick="showSection('media')">
+                🎥
+                <span>Audio & Video</span>
+            </button>
+
+            <button onclick="showSection('knowledge')">
+                🧠
+                <span>Knowledge Map</span>
+            </button>
+
+            <button onclick="showSection('search')">
+                🔍
+                <span>Search</span>
+            </button>
+
+            <button onclick="showSection('assistant')">
+                🤖
+                <span>Ask AI</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADMIN ================= -->
+
+<section id="admin" class="section">
+
+    <div class="page-header">
+
+        <div>
+
+            <small>INSTITUTIONAL MANAGEMENT</small>
+
+            <h1>Administration</h1>
+
+            <p>
+                Archive management and preservation controls.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-stats">
+
+        <div>
+            <span>Archive Items</span>
+            <strong id="adminDocuments">12</strong>
+        </div>
+
+        <div>
+            <span>OCR Pending</span>
+            <strong>3</strong>
+        </div>
+
+        <div>
+            <span>Storage</span>
+            <strong>42%</strong>
+        </div>
+
+        <div>
+            <span>Users</span>
+            <strong>128</strong>
+        </div>
+
+    </div>
+
+
+    <div class="admin-grid">
+
+        <div class="panel">
+
+            <h2>OCR Processing</h2>
+
+            <p>
+                Scan → Image Processing → OCR →
+                Text Verification → Metadata →
+                Digital Archive
+            </p>
+
+            <button class="primary"
+                    onclick="openUpload()">
+                Start Ingestion
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>User Roles</h2>
+
+            <p>
+                Administrator — Full access
+            </p>
+
+            <p>
+                Archivist — Document management
+            </p>
+
+            <p>
+                Researcher — Advanced search
+            </p>
+
+            <p>
+                Student — Educational access
+            </p>
+
+            <p>
+                Visitor — Public content
+            </p>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>Digital Preservation</h2>
+
+            <label>
+                <input type="checkbox" checked>
+                Primary Storage
+            </label>
+
+            <label>
+                <input type="checkbox" checked>
+                Backup Storage
+            </label>
+
+            <label>
+                <input type="checkbox" checked>
+                Integrity Checking
+            </label>
+
+            <label>
+                <input type="checkbox" checked>
+                Access Logging
+            </label>
+
+            <label>
+                <input type="checkbox" checked>
+                Disaster Recovery
+            </label>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>Metadata</h2>
+
+            <div class="tags">
+
+                <span>Title</span>
+                <span>Author</span>
+                <span>Date</span>
+                <span>Location</span>
+                <span>Language</span>
+                <span>Collection</span>
+                <span>Source</span>
+                <span>Subject</span>
+                <span>Keywords</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<!-- ================= UPLOAD MODAL ================= -->
+
+<div id="uploadModal"
+     class="modal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeUpload()">
+            ×
+        </button>
+
+        <h2>Archive Ingestion</h2>
+
+        <p>
+            Upload a historical document or media file.
+        </p>
+
+
+        <input
+            type="file"
+            id="fileUpload"
+            accept=".pdf,.jpg,.jpeg,.png,.txt,.mp3,.mp4"
+        >
+
+
+        <div class="metadata">
+
+            <input
+                id="newTitle"
+                placeholder="Title"
+            >
+
+            <input
+                id="newAuthor"
+                placeholder="Author"
+            >
+
+            <input
+                id="newDate"
+                placeholder="Date"
+            >
+
+            <input
+                id="newLocation"
+                placeholder="Location"
+            >
+
+        </div>
+
+
+        <select id="newType">
+
+            <option>Manuscript</option>
+            <option>Book</option>
+            <option>Speech</option>
+            <option>Photograph</option>
+            <option>Audio</option>
+            <option>Video</option>
+
+        </select>
+
+
+        <button class="primary full"
+                onclick="addArchiveItem()">
+
+            Process & Add
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="toast"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
